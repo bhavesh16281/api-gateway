@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: api-gateway
+  config:
+    import: "optional:configserver:http://${CONFIG_SERVER_URL:localhost:8071}/"
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: false
+              lower-case-service-id: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: api-gateway
+    description: API Gateway Microservice
+    version: 1.0.0
+
+logging:
+  level:
+    com:
+      bhavesh16281:
+        api_gateway: DEBUG
