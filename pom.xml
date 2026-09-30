@@ -44,9 +44,16 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-gateway-server-webflux</artifactId>
 		</dependency>
-		<dependency>
+		<!-- Used for client side load balancing and service discovery -->
+		<!-- <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency> -->
+
+		<!-- used for server side load balancing and service discovery in kubernetes environment -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-kubernetes-discoveryclient</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -121,7 +128,7 @@
 				<version>3.5.1</version>
 				<configuration>
 					<to>
-						<image>bhavesh16281/${project.artifactId}:6.5</image>
+						<image>bhavesh16281/${project.artifactId}:6.6</image>
 					</to>
 				</configuration>
 			</plugin>

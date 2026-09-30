@@ -7,13 +7,24 @@ spring:
     gateway:
       server:
         webflux:
-          discovery:
-            locator:
-              enabled: false
-              lower-case-service-id: true
+          # used for client side service discovery 
+          # discovery:
+          #   locator:
+          #     enabled: false
+          #     lower-case-service-id: true
       httpclient:
         connect-timeout: 1000
         response-timeout: 10s
+    # used for server side load balancing and service discovery in kubernetes environment
+    kubernetes:
+      discovery:
+        enabled: true
+        all-namespaces: true
+    # used for server side load balancing and service discovery in kubernetes environment
+    discovery:
+      client:
+        health-indicator:
+          enabled: false
   data:
     redis:
       connect-timeout: 1000
